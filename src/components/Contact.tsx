@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, CheckCircle, Loader2 } from 'lucide-react';
 
-const Contact = () => {
+interface ContactProps {
+  prefilledPackage: { name: string; price: string } | null;
+}
+
+const Contact = ({ prefilledPackage }: ContactProps) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -10,13 +14,48 @@ const Contact = () => {
     name: '',
     phone: '',
     service: 'car-wash',
+    selectedPackage: '',
+    price: '',
     address: '',
     preferredTime: '',
     message: ''
   });
 
+  useEffect(() => {
+    if (prefilledPackage) {
+      setFormData(prev => ({
+        ...prev,
+        service: 'car-wash',
+        selectedPackage: prefilledPackage.name,
+        price: prefilledPackage.price
+      }));
+    }
+  }, [prefilledPackage]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    
+    if (name === 'selectedPackage') {
+      const priceMap: Record<string, string> = {
+        'Basic Wash': '₹399',
+        'Premium Wash': '₹599',
+        'Deep Clean': '₹999'
+      };
+      setFormData(prev => ({
+        ...prev,
+        selectedPackage: value,
+        price: priceMap[value] || ''
+      }));
+    } else if (name === 'service') {
+      setFormData(prev => ({
+        ...prev,
+        service: value,
+        selectedPackage: value === 'car-wash' ? prev.selectedPackage : '',
+        price: value === 'car-wash' ? prev.price : ''
+      }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -48,24 +87,16 @@ const Contact = () => {
         'electrical': 'Electrical Work'
       };
 
-      // Create a robust payload containing lowercase, camelCase, and capitalized variations
-      // to ensure flawless compatibility with any custom or generic dynamic Apps Script mapping
+      // Create a clean and robust payload without duplicate case variations as requested
       const payload = {
-        ...formData,
+        name: formData.name,
+        phone: formData.phone,
         service: serviceLabels[formData.service] || formData.service,
-        
-        // Preferred time column name fallback mappings
-        time: formData.preferredTime,
-        Time: formData.preferredTime,
-        'Preferred Time': formData.preferredTime,
-        preferredtime: formData.preferredTime,
-        
-        // Case fallbacks for sheet headers
-        Name: formData.name,
-        Phone: formData.phone,
-        Service: serviceLabels[formData.service] || formData.service,
-        Address: formData.address,
-        Message: formData.message
+        selectedPackage: formData.selectedPackage,
+        price: formData.price,
+        address: formData.address,
+        preferredTime: formData.preferredTime,
+        message: formData.message
       };
 
       // We send data as text/plain to avoid CORS preflight issues with Google Apps Script
@@ -87,7 +118,14 @@ const Contact = () => {
       setTimeout(() => {
         setIsSubmitted(false);
         setFormData({
-          name: '', phone: '', service: 'car-wash', address: '', preferredTime: '', message: ''
+          name: '',
+          phone: '',
+          service: 'car-wash',
+          selectedPackage: '',
+          price: '',
+          address: '',
+          preferredTime: '',
+          message: ''
         });
       }, 5000);
       
@@ -139,7 +177,19 @@ const Contact = () => {
                     Booking request sent successfully. DrFix will contact you soon.
                   </p>
                   <button 
-                    onClick={() => setIsSubmitted(false)}
+                    onClick={() => {
+                      setIsSubmitted(false);
+                      setFormData({
+                        name: '',
+                        phone: '',
+                        service: 'car-wash',
+                        selectedPackage: '',
+                        price: '',
+                        address: '',
+                        preferredTime: '',
+                        message: ''
+                      });
+                    }}
                     className="mt-6 text-emerald-500 font-medium hover:underline"
                   >
                     Book another service
@@ -162,7 +212,7 @@ const Contact = () => {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition-colors outline-none"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition-colors outline-none text-dark-900"
                         placeholder="Rahul Sharma"
                       />
                     </div>
@@ -175,7 +225,7 @@ const Contact = () => {
                         required
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition-colors outline-none"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition-colors outline-none text-dark-900"
                         placeholder="98765 43210"
                       />
                     </div>
@@ -188,13 +238,49 @@ const Contact = () => {
                       name="service"
                       value={formData.service}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition-colors outline-none bg-white"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition-colors outline-none bg-white text-dark-900"
                     >
                       <option value="car-wash">Car Wash</option>
                       <option value="plumbing">Plumbing</option>
                       <option value="electrical">Electrical Work</option>
                     </select>
                   </div>
+
+                  {formData.service === 'car-wash' && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+                    >
+                      <div>
+                        <label htmlFor="selectedPackage" className="block text-sm font-medium text-gray-700 mb-2">Select Package</label>
+                        <select 
+                          id="selectedPackage" 
+                          name="selectedPackage"
+                          value={formData.selectedPackage}
+                          onChange={handleChange}
+                          className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition-colors outline-none bg-white text-dark-900"
+                        >
+                          <option value="">Select a package...</option>
+                          <option value="Basic Wash">Basic Wash - ₹399</option>
+                          <option value="Premium Wash">Premium Wash - ₹599</option>
+                          <option value="Deep Clean">Deep Clean - ₹999</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-2">Package Price</label>
+                        <input 
+                          type="text" 
+                          id="price" 
+                          name="price" 
+                          readOnly
+                          value={formData.price}
+                          className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-500 font-semibold cursor-not-allowed outline-none"
+                          placeholder="Select a package first"
+                        />
+                      </div>
+                    </motion.div>
+                  )}
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
@@ -206,7 +292,7 @@ const Contact = () => {
                         required
                         value={formData.address}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition-colors outline-none"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition-colors outline-none text-dark-900"
                         placeholder="Flat 203, Green Park, New Delhi"
                       />
                     </div>
@@ -219,7 +305,7 @@ const Contact = () => {
                         required
                         value={formData.preferredTime}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition-colors outline-none"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition-colors outline-none text-dark-900"
                         placeholder="Tomorrow, 10:00 AM"
                       />
                     </div>
@@ -233,7 +319,7 @@ const Contact = () => {
                       rows={3}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition-colors outline-none resize-none"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition-colors outline-none resize-none text-dark-900"
                       placeholder="Any specific instructions for our team?"
                     ></textarea>
                   </div>

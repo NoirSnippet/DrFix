@@ -2,7 +2,11 @@
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 
-const Pricing = () => {
+interface PricingProps {
+  onSelectPackage: (packageName: string, packagePrice: string) => void;
+}
+
+const Pricing = ({ onSelectPackage }: PricingProps) => {
   const plans = [
     {
       name: 'Basic Wash',
@@ -98,15 +102,16 @@ const Pricing = () => {
                 ))}
               </ul>
 
-              <a
-                href="#contact"
+              <button
+                type="button"
+                onClick={() => onSelectPackage(plan.name, plan.price)}
                 className={`block w-full text-center py-3.5 rounded-xl font-semibold transition-all ${plan.popular
                   ? 'bg-emerald-400 hover:bg-emerald-500 text-white shadow-md hover:shadow-lg'
                   : 'bg-gray-50 hover:bg-gray-100 text-dark-900 border border-gray-200'
                   }`}
               >
                 Choose {plan.name}
-              </a>
+              </button>
             </motion.div>
           ))}
         </div>
