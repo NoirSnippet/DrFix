@@ -11,7 +11,7 @@ const Footer = () => {
               <div className="bg-emerald-400 p-1.5 rounded-lg">
                 <Droplets className="h-5 w-5 text-black" />
               </div>
-              <span className="text-2xl font-bold tracking-tight text-white">
+              <span className="text-2xl font-bold tracking-tight text-black">
                 Dr<span className="text-emerald-400">Fix</span>
               </span>
             </div>
@@ -32,7 +32,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-white text-lg font-semibold mb-4">Our Services</h3>
+            <h3 className="text-[#34D399] text-lg font-semibold mb-4">Our Services</h3>
             <ul className="space-y-3 text-sm">
               <li><a href="#services" className="hover:text-emerald-400 transition-colors">Premium Car Wash</a></li>
               <li><a href="#services" className="hover:text-emerald-400 transition-colors">Interior Deep Cleaning</a></li>
@@ -43,7 +43,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-white text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-[#34D399] text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-3 text-sm">
               <li><a href="#home" className="hover:text-emerald-400 transition-colors">Home</a></li>
               <li><a href="#how-it-works" className="hover:text-emerald-400 transition-colors">How It Works</a></li>
