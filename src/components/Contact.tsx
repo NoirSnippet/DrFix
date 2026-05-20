@@ -42,6 +42,8 @@ const Contact = ({ prefilledPackage }: ContactProps) => {
         'Deep Clean': '₹999',
         'Basic Fix': '₹299',
         'Standard Repair': '₹599',
+        'Minor Repair': '₹299',
+        'Standard Fix': '₹599',
         'Full Installation': '₹999'
       };
       setFormData(prev => ({
