@@ -20,7 +20,7 @@ const Hero = () => {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-dark-900 mb-6 leading-tight">
-              Professional <span className="text-emerald-400">Car Wash</span> <br />
+              Professional <span className="text-blue-600">Car Wash</span> <br />
               At Your Doorstep
             </h1>
 

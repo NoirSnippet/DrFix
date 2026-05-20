@@ -8,7 +8,7 @@ const FAQ = () => {
   const faqs = [
     {
       question: 'Do I need to provide water or electricity for the car wash?',
-      answer: 'No, our professionals come fully equipped with their own water supply and eco-friendly products. You do not need to provide anything!'
+      answer: 'Yes, You just need to provide water and electricity and our professionals come fully equipped with their equipments and eco-friendly products. But in future we will be upgrading ourself as the our business proceeds to bring our own water supply and electricity supply!'
     },
     {
       question: 'How quickly can I get a plumber or electrician?',

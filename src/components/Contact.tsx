@@ -39,7 +39,10 @@ const Contact = ({ prefilledPackage }: ContactProps) => {
       const priceMap: Record<string, string> = {
         'Basic Wash': '₹399',
         'Premium Wash': '₹599',
-        'Deep Clean': '₹999'
+        'Deep Clean': '₹999',
+        'Basic Fix': '₹299',
+        'Standard Repair': '₹599',
+        'Full Installation': '₹999'
       };
       setFormData(prev => ({
         ...prev,
@@ -50,8 +53,8 @@ const Contact = ({ prefilledPackage }: ContactProps) => {
       setFormData(prev => ({
         ...prev,
         service: value,
-        selectedPackage: value === 'car-wash' ? prev.selectedPackage : '',
-        price: value === 'car-wash' ? prev.price : ''
+        selectedPackage: '',
+        price: ''
       }));
     } else {
       setFormData(prev => ({ ...prev, [name]: value }));
@@ -246,41 +249,57 @@ const Contact = ({ prefilledPackage }: ContactProps) => {
                     </select>
                   </div>
 
-                  {formData.service === 'car-wash' && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-                    >
-                      <div>
-                        <label htmlFor="selectedPackage" className="block text-sm font-medium text-gray-700 mb-2">Select Package</label>
-                        <select 
-                          id="selectedPackage" 
-                          name="selectedPackage"
-                          value={formData.selectedPackage}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition-colors outline-none bg-white text-dark-900"
-                        >
-                          <option value="">Select a package...</option>
-                          <option value="Basic Wash">Basic Wash - ₹399</option>
-                          <option value="Premium Wash">Premium Wash - ₹599</option>
-                          <option value="Deep Clean">Deep Clean - ₹999</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-2">Package Price</label>
-                        <input 
-                          type="text" 
-                          id="price" 
-                          name="price" 
-                          readOnly
-                          value={formData.price}
-                          className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-500 font-semibold cursor-not-allowed outline-none"
-                          placeholder="Select a package first"
-                        />
-                      </div>
-                    </motion.div>
-                  )}
+                  <motion.div 
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+                  >
+                    <div>
+                      <label htmlFor="selectedPackage" className="block text-sm font-medium text-gray-700 mb-2">Select Package</label>
+                      <select 
+                        id="selectedPackage" 
+                        name="selectedPackage"
+                        value={formData.selectedPackage}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition-colors outline-none bg-white text-dark-900"
+                      >
+                        <option value="">Select a package...</option>
+                        {formData.service === 'car-wash' && (
+                          <>
+                            <option value="Basic Wash">Basic Wash - ₹399</option>
+                            <option value="Premium Wash">Premium Wash - ₹599</option>
+                            <option value="Deep Clean">Deep Clean - ₹999</option>
+                          </>
+                        )}
+                        {formData.service === 'plumbing' && (
+                          <>
+                            <option value="Basic Fix">Basic Fix - ₹299</option>
+                            <option value="Standard Repair">Standard Repair - ₹599</option>
+                            <option value="Full Installation">Full Installation - ₹999</option>
+                          </>
+                        )}
+                        {formData.service === 'electrical' && (
+                          <>
+                            <option value="Minor Repair">Minor Repair - ₹299</option>
+                            <option value="Standard Fix">Standard Fix - ₹599</option>
+                            <option value="Full Installation">Full Installation - ₹999</option>
+                          </>
+                        )}
+                      </select>
+                    </div>
+                    <div>
+                      <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-2">Package Price</label>
+                      <input 
+                        type="text" 
+                        id="price" 
+                        name="price" 
+                        readOnly
+                        value={formData.price}
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-500 font-semibold cursor-not-allowed outline-none"
+                        placeholder="Select a package first"
+                      />
+                    </div>
+                  </motion.div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>

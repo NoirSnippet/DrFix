@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Droplets } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import logo from '../assets/LOGO.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,11 +28,9 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <a href="#" className="flex items-center gap-2 group">
-              <div className="bg-emerald-400 p-2 rounded-lg group-hover:bg-blue-500 transition-colors">
-                <Droplets className="h-6 w-6 text-white" />
-              </div>
+              <img src={logo} alt="DrFix" className="h-14 sm:h-16 w-auto" />
               <span className={`text-2xl font-bold tracking-tight ${isScrolled ? 'text-dark-900' : 'text-dark-900 drop-shadow-sm'}`}>
-                Dr<span className="text-emerald-400">Fix</span>
+                Dr<span className="text-blue-600">Fix</span>
               </span>
             </a>
           </div>

@@ -1,4 +1,5 @@
-import { Droplets, Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
+import logo from '../assets/LOGO.png';
 
 const Footer = () => {
   return (
@@ -8,11 +9,9 @@ const Footer = () => {
 
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="bg-emerald-400 p-1.5 rounded-lg">
-                <Droplets className="h-5 w-5 text-black" />
-              </div>
+              <img src={logo} alt="DrFix" className="h-14 sm:h-16 w-auto" />
               <span className="text-2xl font-bold tracking-tight text-black">
-                Dr<span className="text-emerald-400">Fix</span>
+                Dr<span className="text-blue-600">Fix</span>
               </span>
             </div>
             <p className="text-sm leading-relaxed mt-4">
@@ -32,7 +31,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-[#34D399] text-lg font-semibold mb-4">Our Services</h3>
+            <h3 className="text-emerald-400 text-lg font-semibold mb-4">Our Services</h3>
             <ul className="space-y-3 text-sm">
               <li><a href="#services" className="hover:text-emerald-400 transition-colors">Premium Car Wash</a></li>
               <li><a href="#services" className="hover:text-emerald-400 transition-colors">Interior Deep Cleaning</a></li>
@@ -43,7 +42,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-[#34D399] text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-emerald-400 text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-3 text-sm">
               <li><a href="#home" className="hover:text-emerald-400 transition-colors">Home</a></li>
               <li><a href="#how-it-works" className="hover:text-emerald-400 transition-colors">How It Works</a></li>
@@ -54,7 +53,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-[#34D399] text-lg font-semibold mb-4">Contact Info</h3>
+            <h3 className="text-emerald-400 text-lg font-semibold mb-4">Contact Info</h3>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-emerald-400 shrink-0" />
