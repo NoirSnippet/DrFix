@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 
@@ -11,14 +10,14 @@ const Testimonials = () => {
       rating: 5
     },
     {
-      name: 'Rohan Patel',
-      service: 'Plumbing Repair',
-      text: 'Had a burst pipe emergency. The DrFix plumber arrived within 30 minutes, fixed it quickly, and cleaned up everything. Highly recommend!',
+      name: 'Rohan Malhotra',
+      service: 'Premium Bike Wash',
+      text: 'Highly satisfied! The doorstep detailing was extremely professional. They cleaned the engine and chain meticulously. My bike looks and runs great!',
       rating: 5
     },
     {
       name: 'Anjali Sharma',
-      service: 'Basic Car Wash',
+      service: 'Complete Detailing (Car)',
       text: 'So convenient and affordable. The worker was polite and did a very thorough job on the exterior. Will definitely use them again.',
       rating: 4
     }
@@ -31,7 +30,7 @@ const Testimonials = () => {
           <h2 className="text-emerald-500 font-semibold tracking-wide uppercase text-sm mb-2">Testimonials</h2>
           <h3 className="text-3xl md:text-4xl font-bold text-dark-900 mb-4">What Our Clients Say</h3>
           <p className="text-gray-600 text-lg">
-            Don't just take our word for it. Here's what our satisfied customers have to say about our services.
+            Don't just take our word for it. Here's what our satisfied customers have to say about our vehicle wash and detailing services.
           </p>
         </div>
 
@@ -56,7 +55,7 @@ const Testimonials = () => {
                 ))}
               </div>
               
-              <p className="text-gray-600 mb-8 relative z-10 leading-relaxed italic">
+              <p className="font-testimonial text-gray-600 mb-8 relative z-10 leading-relaxed italic">
                 "{testimonial.text}"
               </p>
               

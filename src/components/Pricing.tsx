@@ -35,7 +35,7 @@ const plansData: Record<
     {
       name: 'Car Servicing',
       price: '₹999',
-      priceSuffix: ' + Material cost',
+      priceSuffix: ' + Material cost (Not Included)',
       description: 'The perfect balance of thorough exterior and interior cleaning.',
       features: [
         'Engine oil change',
@@ -48,7 +48,7 @@ const plansData: Record<
     {
       name: 'Premium Plan',
       price: '₹1,499',
-      priceSuffix: ' + Material cost',
+      priceSuffix: ' + Material cost (Not Included)',
       description: 'Comprehensive car servicing and multi-point inspection.',
       features: [
         'Everything in Complete Detailing',
@@ -80,7 +80,7 @@ const plansData: Record<
     {
       name: 'Bike Servicing',
       price: '₹299',
-      priceSuffix: ' + Material cost',
+      priceSuffix: ' + Material cost (Not included)',
       description: 'Comprehensive general service to keep your ride running smoothly.',
       features: [
         'General inspection & diagnostics',
@@ -96,15 +96,14 @@ const plansData: Record<
     {
       name: 'Premium Plan',
       price: '₹699',
-      priceSuffix: ' + Material cost',
+      priceSuffix: ' + Material cost (Not included)',
       description: 'The ultimate care package: Detailing + Servicing combined.',
       features: [
         'Everything in Complete Detailing',
         'Everything in Servicing',
         'Spark plug & & brake pad replacement labor',
         'Complete carburetor cleaning',
-        'Moving joints grease application',
-        'Priority booking support'
+        'Moving joints grease application'
       ],
       popular: true
     }

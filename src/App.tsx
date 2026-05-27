@@ -11,6 +11,7 @@ import PartnerWithUs from './components/PartnerWithUs';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import BackToTop from './components/BackToTop';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfUse from './components/TermsOfUse';
 
@@ -80,6 +81,7 @@ function App() {
       </main>
       <Footer navigate={navigate} />
       <FloatingWhatsApp />
+      <BackToTop />
     </div>
   );
 }

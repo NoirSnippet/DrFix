@@ -37,22 +37,31 @@ const Contact = ({ prefilledPackage, navigate }: ContactProps) => {
     const { name, value } = e.target;
     
     if (name === 'selectedPackage') {
-      const priceMap: Record<string, string> = {
-        'Basic Wash': '₹399',
-        'Premium Wash': '₹599',
-        'Car Servicing': '₹1,999 + item cost',
-        'Basic Fix': '₹299',
-        'Standard Repair': '₹599',
-        'Minor Repair': '₹299',
-        'Standard Fix': '₹599',
-        'Complete Detailing': '₹549',
-        'Servicing': '₹999 + item cost',
-        'Premium Plan': '₹1,548 + item cost'
+      const priceMap: Record<string, Record<string, string>> = {
+        'car-wash': {
+          'Complete Detailing': '₹549',
+          'Car Servicing': '₹999 + Material cost',
+          'Premium Plan': '₹1,499 + Material cost'
+        },
+        'bike-wash': {
+          'Complete Detailing': '₹149',
+          'Bike Servicing': '₹299 + Material cost',
+          'Premium Plan': '₹699 + Material cost'
+        },
+        'plumbing': {
+          'Basic Fix': '₹299',
+          'Standard Repair': '₹599'
+        },
+        'electrical': {
+          'Minor Repair': '₹299',
+          'Standard Fix': '₹599'
+        }
       };
+      const servicePrices = priceMap[formData.service] || {};
       setFormData(prev => ({
         ...prev,
         selectedPackage: value,
-        price: priceMap[value] || ''
+        price: servicePrices[value] || ''
       }));
     } else if (name === 'service') {
       setFormData(prev => ({
@@ -69,13 +78,22 @@ const Contact = ({ prefilledPackage, navigate }: ContactProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
+
+    if (!formData.selectedPackage) {
+      const msg = 'Please select a package before submitting.';
+      setErrorMsg(msg);
+      alert(msg);
+      return;
+    }
     
     // Validate Indian phone number (10 digits starting with 6-9)
     const cleanPhone = formData.phone.replace(/[\s-]/g, '');
     const phoneRegex = /^[6-9]\d{9}$/;
     
     if (!phoneRegex.test(cleanPhone)) {
-      setErrorMsg('Please enter a valid 10-digit Indian phone number.');
+      const msg = 'Please enter a valid 10-digit Indian phone number (e.g., 98765 43210).';
+      setErrorMsg(msg);
+      alert(msg);
       return;
     }
 
@@ -273,16 +291,16 @@ const Contact = ({ prefilledPackage, navigate }: ContactProps) => {
                         <option value="">Select a package...</option>
                         {formData.service === 'car-wash' && (
                           <>
-                            <option value="Basic Wash">Basic Wash - ₹399</option>
-                            <option value="Premium Wash">Premium Wash - ₹599</option>
-                            <option value="Car Servicing">Car Servicing - ₹1,999 + item cost</option>
+                            <option value="Complete Detailing">Complete Detailing - ₹549</option>
+                            <option value="Car Servicing">Car Servicing - ₹999 + Material cost</option>
+                            <option value="Premium Plan">Premium Plan - ₹1,499 + Material cost</option>
                           </>
                         )}
                         {formData.service === 'bike-wash' && (
                           <>
-                            <option value="Complete Detailing">Complete Detailing - ₹549</option>
-                            <option value="Servicing">Servicing - ₹999 + item cost</option>
-                            <option value="Premium Plan">Premium Plan - ₹1,548 + item cost</option>
+                            <option value="Complete Detailing">Complete Detailing - ₹149</option>
+                            <option value="Bike Servicing">Bike Servicing - ₹299 + Material cost</option>
+                            <option value="Premium Plan">Premium Plan - ₹699 + Material cost</option>
                           </>
                         )}
                         {formData.service === 'plumbing' && (

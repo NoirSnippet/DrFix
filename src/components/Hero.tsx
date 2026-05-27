@@ -20,7 +20,7 @@ const Hero = ({ onSeePlans }: HeroProps) => {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 text-blue-600 font-medium text-sm mb-6 border border-blue-100">
               <Star className="h-4 w-4 fill-blue-500 text-blue-500" />
-              <span>Rated by 20+ Customers</span>
+              <span>Rated by 20+ Active Customers</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-dark-900 mb-6 leading-tight">
@@ -37,7 +37,7 @@ const Hero = ({ onSeePlans }: HeroProps) => {
                 href="#contact"
                 className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3.5 rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1 flex items-center justify-center gap-2"
               >
-                Book a Car Wash <ArrowRight className="h-5 w-5" />
+                Book a Wash<ArrowRight className="h-5 w-5" />
               </a>
               <a
                 href="#pricing"
