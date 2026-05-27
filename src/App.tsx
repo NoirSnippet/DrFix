@@ -43,7 +43,7 @@ function App() {
   };
 
   const handleSeePlans = () => {
-    setActivePricingTab('bike-wash');
+    setActivePricingTab('car-wash');
     const pricingSection = document.getElementById('pricing');
     if (pricingSection) {
       pricingSection.scrollIntoView({ behavior: 'smooth' });
