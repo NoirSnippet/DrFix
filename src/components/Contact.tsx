@@ -3,10 +3,11 @@ import { motion } from 'framer-motion';
 import { Calendar, CheckCircle, Loader2 } from 'lucide-react';
 
 interface ContactProps {
-  prefilledPackage: { name: string; price: string } | null;
+  prefilledPackage: { name: string; price: string; service?: string } | null;
+  navigate: (path: string) => void;
 }
 
-const Contact = ({ prefilledPackage }: ContactProps) => {
+const Contact = ({ prefilledPackage, navigate }: ContactProps) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -25,7 +26,7 @@ const Contact = ({ prefilledPackage }: ContactProps) => {
     if (prefilledPackage) {
       setFormData(prev => ({
         ...prev,
-        service: 'car-wash',
+        service: prefilledPackage.service || 'car-wash',
         selectedPackage: prefilledPackage.name,
         price: prefilledPackage.price
       }));
@@ -39,12 +40,14 @@ const Contact = ({ prefilledPackage }: ContactProps) => {
       const priceMap: Record<string, string> = {
         'Basic Wash': '₹399',
         'Premium Wash': '₹599',
-        'Deep Clean': '₹999',
+        'Car Servicing': '₹1,999 + item cost',
         'Basic Fix': '₹299',
         'Standard Repair': '₹599',
         'Minor Repair': '₹299',
         'Standard Fix': '₹599',
-        'Full Installation': '₹999'
+        'Complete Detailing': '₹549',
+        'Servicing': '₹999 + item cost',
+        'Premium Plan': '₹1,548 + item cost'
       };
       setFormData(prev => ({
         ...prev,
@@ -88,6 +91,7 @@ const Contact = ({ prefilledPackage }: ContactProps) => {
       // Map service values to professional user-friendly labels
       const serviceLabels: Record<string, string> = {
         'car-wash': 'Car Wash',
+        'bike-wash': 'Bike Wash',
         'plumbing': 'Plumbing',
         'electrical': 'Electrical Work'
       };
@@ -246,8 +250,9 @@ const Contact = ({ prefilledPackage }: ContactProps) => {
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition-colors outline-none bg-white text-dark-900"
                     >
                       <option value="car-wash">Car Wash</option>
-                      <option value="plumbing">Plumbing</option>
-                      <option value="electrical">Electrical Work</option>
+                      <option value="bike-wash">Bike Wash</option>
+                      <option value="plumbing" disabled>Plumbing (Coming Soon)</option>
+                      <option value="electrical" disabled>Electrical Work (Coming Soon)</option>
                     </select>
                   </div>
 
@@ -270,21 +275,26 @@ const Contact = ({ prefilledPackage }: ContactProps) => {
                           <>
                             <option value="Basic Wash">Basic Wash - ₹399</option>
                             <option value="Premium Wash">Premium Wash - ₹599</option>
-                            <option value="Deep Clean">Deep Clean - ₹999</option>
+                            <option value="Car Servicing">Car Servicing - ₹1,999 + item cost</option>
+                          </>
+                        )}
+                        {formData.service === 'bike-wash' && (
+                          <>
+                            <option value="Complete Detailing">Complete Detailing - ₹549</option>
+                            <option value="Servicing">Servicing - ₹999 + item cost</option>
+                            <option value="Premium Plan">Premium Plan - ₹1,548 + item cost</option>
                           </>
                         )}
                         {formData.service === 'plumbing' && (
                           <>
                             <option value="Basic Fix">Basic Fix - ₹299</option>
                             <option value="Standard Repair">Standard Repair - ₹599</option>
-                            <option value="Full Installation">Full Installation - ₹999</option>
                           </>
                         )}
                         {formData.service === 'electrical' && (
                           <>
                             <option value="Minor Repair">Minor Repair - ₹299</option>
                             <option value="Standard Fix">Standard Fix - ₹599</option>
-                            <option value="Full Installation">Full Installation - ₹999</option>
                           </>
                         )}
                       </select>
@@ -343,6 +353,35 @@ const Contact = ({ prefilledPackage }: ContactProps) => {
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition-colors outline-none resize-none text-dark-900"
                       placeholder="Any specific instructions for our team?"
                     ></textarea>
+                  </div>
+
+                  <div className="flex items-start gap-3 mt-4 mb-6">
+                    <input 
+                      type="checkbox" 
+                      id="agreement" 
+                      name="agreement" 
+                      required
+                      className="mt-1 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-400 cursor-pointer"
+                    />
+                    <label htmlFor="agreement" className="text-sm text-gray-600 select-none cursor-pointer">
+                      I agree to the{' '}
+                      <button 
+                        type="button" 
+                        onClick={() => navigate('/terms-of-use')} 
+                        className="text-emerald-500 hover:text-emerald-600 font-semibold hover:underline bg-transparent border-none p-0 inline cursor-pointer"
+                      >
+                        Terms of Use
+                      </button>
+                      {' '}and acknowledge the{' '}
+                      <button 
+                        type="button" 
+                        onClick={() => navigate('/privacy-policy')} 
+                        className="text-emerald-500 hover:text-emerald-600 font-semibold hover:underline bg-transparent border-none p-0 inline cursor-pointer"
+                      >
+                        Privacy Policy
+                      </button>
+                      .
+                    </label>
                   </div>
 
                   <button 

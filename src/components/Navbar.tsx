@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import logo from '../assets/LOGO.png';
+import logo from '../assets/LOGO.jpg';
 
-const Navbar = () => {
+interface NavbarProps {
+  navigate: (path: string) => void;
+  currentPath: string;
+}
+
+const Navbar = ({ navigate, currentPath }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -20,16 +25,45 @@ const Navbar = () => {
     { name: 'Pricing', href: '#pricing' },
     { name: 'How it Works', href: '#how-it-works' },
     { name: 'FAQ', href: '#faq' },
+    { name: 'Connect With Us', href: '#connect' },
   ];
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setIsOpen(false);
+    
+    if (href === '#' || href === '#home') {
+      navigate('/');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    if (currentPath !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const id = href.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+    } else {
+      const id = href.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-5'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled || currentPath !== '/' ? 'bg-white/90 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-5'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <a href="#" className="flex items-center gap-2 group">
+            <a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }} className="flex items-center gap-2 group">
               <img src={logo} alt="DrFix" className="h-14 sm:h-16 w-auto" />
-              <span className={`text-2xl font-bold tracking-tight ${isScrolled ? 'text-dark-900' : 'text-dark-900 drop-shadow-sm'}`}>
+              <span className={`text-2xl font-bold tracking-tight ${isScrolled || currentPath !== '/' ? 'text-dark-900' : 'text-dark-900 drop-shadow-sm'}`}>
                 Dr<span className="text-blue-600">Fix</span>
               </span>
             </a>
@@ -41,7 +75,8 @@ const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`font-medium transition-colors hover:text-emerald-400 ${isScrolled ? 'text-gray-600' : 'text-gray-800'}`}
+                  onClick={(e) => handleLinkClick(e, link.href)}
+                  className={`font-medium transition-colors hover:text-emerald-400 ${isScrolled || currentPath !== '/' ? 'text-gray-600' : 'text-gray-800'}`}
                 >
                   {link.name}
                 </a>
@@ -49,6 +84,7 @@ const Navbar = () => {
             </div>
             <a
               href="#contact"
+              onClick={(e) => handleLinkClick(e, '#contact')}
               className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
             >
               Book Now
@@ -74,7 +110,7 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => handleLinkClick(e, link.href)}
                 className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-emerald-400 hover:bg-emerald-50 rounded-md"
               >
                 {link.name}
@@ -83,7 +119,7 @@ const Navbar = () => {
             <div className="pt-4 pb-2">
               <a
                 href="#contact"
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => handleLinkClick(e, '#contact')}
                 className="block w-full text-center bg-blue-500 text-white px-5 py-3 rounded-xl font-medium shadow-md"
               >
                 Book Now

@@ -8,7 +8,7 @@ const FAQ = () => {
   const faqs = [
     {
       question: 'Do I need to provide water or electricity for the car wash?',
-      answer: 'Yes, You just need to provide water and electricity and our professionals come fully equipped with their equipments and eco-friendly products. But in future we will be upgrading ourself as the our business proceeds to bring our own water supply and electricity supply!'
+      answer: 'No, our professionals come fully equipped with their equipments and eco-friendly products which helps you get the best experience and quality service!'
     },
     {
       question: 'How quickly can I get a plumber or electrician?',
@@ -38,8 +38,8 @@ const FAQ = () => {
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className={`border rounded-2xl overflow-hidden transition-colors ${openIndex === index ? 'border-emerald-200 bg-emerald-50/30' : 'border-gray-200 bg-white'}`}
             >
               <button
@@ -47,8 +47,8 @@ const FAQ = () => {
                 className="w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none"
               >
                 <span className="font-semibold text-lg text-dark-900">{faq.question}</span>
-                <ChevronDown 
-                  className={`h-5 w-5 text-gray-500 transition-transform duration-300 ${openIndex === index ? 'rotate-180 text-emerald-500' : ''}`} 
+                <ChevronDown
+                  className={`h-5 w-5 text-gray-500 transition-transform duration-300 ${openIndex === index ? 'rotate-180 text-emerald-500' : ''}`}
                 />
               </button>
               <AnimatePresence>

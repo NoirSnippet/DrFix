@@ -1,6 +1,5 @@
-
 import { motion } from 'framer-motion';
-import { Car, Wrench, Zap } from 'lucide-react';
+import { Car, Wrench, Zap, Bike } from 'lucide-react';
 
 const Services = () => {
   const services = [
@@ -11,7 +10,18 @@ const Services = () => {
       icon: Car,
       image: '/images/car_wash.png',
       color: 'emerald',
-      featured: true
+      featured: true,
+      comingSoon: false
+    },
+    {
+      id: 'bike-wash',
+      title: 'Premium Bike Wash',
+      description: 'Complete detailing, chain cleaning, foam washing, and polishing. High-quality doorstep care for motorcycles and scooters.',
+      icon: Bike,
+      image: '/images/bike_wash.png',
+      color: 'blue',
+      featured: false,
+      comingSoon: false
     },
     {
       id: 'plumbing',
@@ -20,7 +30,8 @@ const Services = () => {
       icon: Wrench,
       image: '/images/plumbing.png',
       color: 'blue',
-      featured: false
+      featured: false,
+      comingSoon: true
     },
     {
       id: 'electrical',
@@ -29,7 +40,8 @@ const Services = () => {
       icon: Zap,
       image: '/images/electrical.png',
       color: 'amber', // using a generic accent color class in logic
-      featured: false
+      featured: false,
+      comingSoon: true
     }
   ];
 
@@ -40,11 +52,11 @@ const Services = () => {
           <h2 className="text-emerald-400 font-semibold tracking-wide uppercase text-sm mb-2">Our Expertise</h2>
           <h3 className="text-3xl md:text-4xl font-bold text-dark-900 mb-4">Services Tailored for Your Home</h3>
           <p className="text-gray-600 text-lg">
-            We specialize in providing top-tier doorstep services. From making your car shine to keeping your home running flawlessly.
+            We specialize in providing top-tier doorstep services. From making your vehicle shine to keeping your home running flawlessly.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.id}
@@ -52,35 +64,45 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`rounded-2xl overflow-hidden border ${service.featured ? 'border-emerald-200 shadow-xl shadow-emerald-100/50' : 'border-gray-100 shadow-lg'} bg-white flex flex-col h-full group`}
+              className={`rounded-2xl overflow-hidden border ${service.featured ? 'border-emerald-200 shadow-xl shadow-emerald-100/50' : 'border-gray-100 shadow-lg'} bg-white flex flex-col h-full group relative`}
             >
-              <div className="relative h-64 overflow-hidden">
-                <img 
-                  src={service.image} 
-                  alt={service.title} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                {service.featured && (
-                  <div className="absolute top-4 right-4 bg-emerald-400 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
-                    Most Popular
+              {service.comingSoon && (
+                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-gray-50/40 backdrop-blur-[2px]">
+                  <div className="bg-amber-500/90 text-white font-bold px-5 py-2.5 rounded-full shadow-lg border border-amber-400/50 backdrop-blur-md uppercase tracking-wider text-xs">
+                    Coming Soon
                   </div>
-                )}
-                <div className="absolute -bottom-6 left-6 bg-white p-4 rounded-xl shadow-lg border border-gray-100">
-                  <service.icon className={`h-6 w-6 ${service.featured ? 'text-emerald-500' : 'text-blue-500'}`} />
                 </div>
-              </div>
-              
-              <div className="pt-10 pb-8 px-6 flex-grow flex flex-col">
-                <h4 className="text-xl font-bold text-dark-900 mb-3">{service.title}</h4>
-                <p className="text-gray-600 mb-6 flex-grow leading-relaxed">
-                  {service.description}
-                </p>
-                <a 
-                  href="#contact" 
-                  className={`font-semibold inline-flex items-center gap-2 ${service.featured ? 'text-emerald-500 hover:text-emerald-600' : 'text-blue-500 hover:text-blue-600'} transition-colors`}
-                >
-                  Book this service <span className="text-lg">→</span>
-                </a>
+              )}
+
+              <div className={`flex flex-col h-full flex-grow ${service.comingSoon ? 'filter blur-[3px] select-none pointer-events-none' : ''}`}>
+                <div className="relative h-64 overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {service.featured && (
+                    <div className="absolute top-4 right-4 bg-emerald-400 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
+                      Most Popular
+                    </div>
+                  )}
+                  <div className="absolute -bottom-6 left-6 bg-white p-4 rounded-xl shadow-lg border border-gray-100">
+                    <service.icon className={`h-6 w-6 ${service.featured ? 'text-emerald-500' : 'text-blue-500'}`} />
+                  </div>
+                </div>
+                
+                <div className="pt-10 pb-8 px-6 flex-grow flex flex-col">
+                  <h4 className="text-xl font-bold text-dark-900 mb-3">{service.title}</h4>
+                  <p className="text-gray-600 mb-6 flex-grow leading-relaxed text-sm">
+                    {service.description}
+                  </p>
+                  <a 
+                    href="#contact" 
+                    className={`font-semibold inline-flex items-center gap-2 text-sm ${service.featured ? 'text-emerald-500 hover:text-emerald-600' : 'text-blue-500 hover:text-blue-600'} transition-colors`}
+                  >
+                    Book this service <span className="text-lg">→</span>
+                  </a>
+                </div>
               </div>
             </motion.div>
           ))}

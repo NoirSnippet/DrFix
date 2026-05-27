@@ -2,7 +2,11 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Star } from 'lucide-react';
 
-const Hero = () => {
+interface HeroProps {
+  onSeePlans: () => void;
+}
+
+const Hero = ({ onSeePlans }: HeroProps) => {
   return (
     <section id="home" className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -34,6 +38,16 @@ const Hero = () => {
                 className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3.5 rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1 flex items-center justify-center gap-2"
               >
                 Book a Car Wash <ArrowRight className="h-5 w-5" />
+              </a>
+              <a
+                href="#pricing"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSeePlans();
+                }}
+                className="bg-emerald-400 hover:bg-emerald-500 text-white px-8 py-3.5 rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-emerald-500/30 hover:-translate-y-1 flex items-center justify-center"
+              >
+                See Plans
               </a>
               <a
                 href="#services"
