@@ -39,7 +39,7 @@ const Footer = ({ navigate }: FooterProps) => {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <img src={logo} alt="DrFix" className="h-14 sm:h-16 w-auto" />
-              <span className="text-2xl font-bold tracking-tight text-white">
+              <span className="text-2xl font-bold tracking-tight text-black">
                 Dr<span className="text-blue-600">Fix</span>
               </span>
             </div>
