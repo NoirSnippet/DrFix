@@ -29,7 +29,7 @@ const Hero = ({ onSeePlans }: HeroProps) => {
             </h1>
 
             <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0">
-              Experience the ultimate convenience with DrFix. We provide premium doorstep car wash, alongside expert plumbing and electrical services. You relax, we fix and clean!
+              Experience the ultimate convenience with HelloHomie. We provide premium doorstep car wash, alongside expert plumbing and electrical services. You relax, we fix and clean!
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">

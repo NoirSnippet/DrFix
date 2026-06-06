@@ -201,7 +201,7 @@ const Contact = ({ prefilledPackage, navigate }: ContactProps) => {
                   </div>
                   <h4 className="text-2xl font-bold text-dark-900">Booking Confirmed!</h4>
                   <p className="text-gray-600">
-                    Booking request sent successfully. DrFix will contact you soon.
+                    Booking request sent successfully. HelloHomie will contact you soon.
                   </p>
                   <button 
                     onClick={() => {

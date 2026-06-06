@@ -41,7 +41,7 @@ const TermsOfUse = ({ navigate }: TermsOfUseProps) => {
             <h2 className="text-2xl font-bold text-dark-900">1. Acceptance of Terms</h2>
           </div>
           <p className="text-gray-600 leading-relaxed">
-            By accessing or using the services provided by <strong>DrFix</strong> ("we", "us", "our"), including our doorstep car wash, plumbing, and electrical services, you agree to be bound by these Terms of Use. If you do not agree to all of these terms, please do not access our website or book any services.
+            By accessing or using the services provided by <strong>HelloHomie</strong> ("we", "us", "our"), including our doorstep car wash, plumbing, and electrical services, you agree to be bound by these Terms of Use. If you do not agree to all of these terms, please do not access our website or book any services.
           </p>
         </section>
 
@@ -54,7 +54,7 @@ const TermsOfUse = ({ navigate }: TermsOfUseProps) => {
             <h2 className="text-2xl font-bold text-dark-900">2. Description of Services</h2>
           </div>
           <p className="text-gray-600 leading-relaxed">
-            DrFix provides a platform for booking premium doorstep services, including professional car washing, and licensed plumbing and electrical tasks. Our professionals travel directly to the user-supplied address to perform the requested service.
+            HelloHomie provides a platform for booking premium doorstep services, including professional car washing, and licensed plumbing and electrical tasks. Our professionals travel directly to the user-supplied address to perform the requested service.
           </p>
         </section>
 
@@ -122,7 +122,7 @@ const TermsOfUse = ({ navigate }: TermsOfUseProps) => {
             <h2 className="text-2xl font-bold text-dark-900">6. Limitation of Liability</h2>
           </div>
           <p className="text-gray-600 leading-relaxed">
-            In no event shall DrFix, its directors, employees, or contractors be liable for any direct, indirect, incidental, or consequential damages resulting from:
+            In no event shall HelloHomie, its directors, employees, or contractors be liable for any direct, indirect, incidental, or consequential damages resulting from:
           </p>
           <ul className="space-y-2 text-gray-600 pl-4 list-disc">
             <li>Any pre-existing vehicle defects, paint issues, or device/plumbing issues not explicitly disclosed before service starts.</li>
@@ -138,11 +138,11 @@ const TermsOfUse = ({ navigate }: TermsOfUseProps) => {
             <p className="text-gray-500 text-sm">For details regarding terms or liability, contact us.</p>
           </div>
           <a
-            href="mailto:drfix.support@gmail.com"
+            href="mailto:hellohomie.support@gmail.com"
             className="bg-emerald-400 hover:bg-emerald-500 text-white font-semibold px-6 py-3 rounded-xl shadow-md transition-colors flex items-center gap-2"
           >
             <Mail className="h-4 w-4" />
-            drfix.support@gmail.com
+            hellohomie.support@gmail.com
           </a>
         </section>
 

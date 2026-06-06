@@ -16,7 +16,7 @@ const HowItWorks = () => {
     },
     {
       icon: MapPin,
-      title: 'DrFix Comes to You',
+      title: 'HelloHomie Comes to You',
       description: 'Our professionals arrive fully equipped.'
     },
     {
@@ -33,7 +33,7 @@ const HowItWorks = () => {
           <h2 className="text-blue-500 font-semibold tracking-wide uppercase text-sm mb-2">Process</h2>
           <h3 className="text-3xl md:text-4xl font-bold text-dark-900 mb-4">How It Works</h3>
           <p className="text-gray-600 text-lg">
-            Booking a service with DrFix is as easy as 1-2-3-4. We value your time and convenience.
+            Booking a service with HelloHomie is as easy as 1-2-3-4. We value your time and convenience.
           </p>
         </div>
 

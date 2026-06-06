@@ -41,7 +41,7 @@ const WhyChooseUs = () => {
         <div className="flex flex-col lg:flex-row gap-16 items-center">
 
           <div className="w-full lg:w-1/3">
-            <h2 className="text-emerald-400 font-semibold tracking-wide uppercase text-sm mb-2">Why DrFix</h2>
+            <h2 className="text-emerald-400 font-semibold tracking-wide uppercase text-sm mb-2">Why HelloHomie</h2>
             <h3 className="text-3xl md:text-4xl font-bold text-black mb-6">The Smart Choice for Home Services</h3>
             <p className="text-gray-400 text-lg mb-8">
               We are revolutionizing how you maintain your car and home. Experience unmatched quality, trust, and convenience.

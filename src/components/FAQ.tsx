@@ -16,7 +16,7 @@ const FAQ = () => {
     },
     {
       question: 'Are your workers trained and background-checked?',
-      answer: 'Absolutely. All DrFix professionals undergo strict background checks and rigorous training to ensure safety and top-quality service.'
+      answer: 'Absolutely. All HelloHomie professionals undergo strict background checks and rigorous training to ensure safety and top-quality service.'
     },
     {
       question: 'How do I pay for the service?',

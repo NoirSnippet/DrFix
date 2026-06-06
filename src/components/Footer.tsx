@@ -1,5 +1,5 @@
 import { Phone, Mail, MapPin } from 'lucide-react';
-import logo from '../assets/LOGO.jpg';
+import logo from '../assets/LOGO.png';
 
 interface FooterProps {
   navigate: (path: string) => void;
@@ -38,22 +38,22 @@ const Footer = ({ navigate }: FooterProps) => {
 
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <img src={logo} alt="DrFix" className="h-14 sm:h-16 w-auto" />
+              <img src={logo} alt="HelloHomie" className="h-14 sm:h-16 w-auto" />
               <span className="text-2xl font-bold tracking-tight text-black">
-                Dr<span className="text-blue-600">Fix</span>
+                Hello<span className="text-blue-600">Homie</span>
               </span>
             </div>
             <p className="text-sm leading-relaxed mt-4">
               Premium doorstep services for all your needs. Professional car wash, expert plumbing, and reliable electrical work, all at your convenience.
             </p>
             <div className="flex space-x-4 pt-2">
-              <a href="https://www.facebook.com/share/18rKAhpTwY/" className="text-gray-800 hover:text-emerald-500 transition-colors">
+              <a href="https://www.facebook.com/share/18rKAhpTwY/" className="text-gray-400 hover:text-emerald-500 transition-colors">
                 Facebook
               </a>
-              <a href="https://www.instagram.com/drfix.wash" className="text-gray-800 hover:text-emerald-500 transition-colors">
+              <a href="https://www.instagram.com/drfix.wash" className="text-gray-400 hover:text-emerald-500 transition-colors">
                 Instagram
               </a>
-              <a href="https://x.com/drfix26" className="text-gray-800 hover:text-emerald-500 transition-colors">
+              <a href="https://x.com/drfix26" className="text-gray-400 hover:text-emerald-500 transition-colors">
                 Twitter
               </a>
             </div>
@@ -95,7 +95,7 @@ const Footer = ({ navigate }: FooterProps) => {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-emerald-400 shrink-0" />
-                <span>drfix.support@gmail.com</span>
+                <span>hellohomie.support@gmail.com</span>
               </li>
             </ul>
           </div>
@@ -103,7 +103,7 @@ const Footer = ({ navigate }: FooterProps) => {
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-          <p>&copy; {new Date().getFullYear()} DrFix Services. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} HelloHomie Services. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <button onClick={() => navigate('/privacy-policy')} className="hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0 text-sm font-medium">Privacy Policy</button>
             <button onClick={() => navigate('/terms-of-use')} className="hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0 text-sm font-medium">Terms of Use</button>

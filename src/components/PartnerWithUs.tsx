@@ -23,12 +23,12 @@ const PartnerWithUs = () => {
   return (
     <section id="connect" className="py-20 bg-gray-50 overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Main Banner Card */}
         <div className="bg-gradient-to-br from-emerald-400 to-blue-500 rounded-3xl shadow-xl overflow-hidden text-white relative">
           {/* Background pattern */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.1),transparent_50%)]"></div>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 p-10 lg:p-16 items-center relative z-10">
             {/* Header Text */}
             <div className="lg:col-span-7 space-y-6">
@@ -37,15 +37,15 @@ const PartnerWithUs = () => {
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
                 Grow Your Business <br className="hidden sm:inline" />
-                With Dr<span className="text-blue-500">Fix</span>
+                With <span className="text-blue-500">HelloHomie</span>
               </h2>
               <p className="text-emerald-50 text-lg leading-relaxed max-w-xl">
                 Are you an expert mechanic, detailer, plumber, or electrician? Partner with us, serve verified clients, and scale your business easily.
               </p>
-              
+
               <div className="pt-4">
                 <a
-                  href="https://wa.me/918791640669?text=Hello%20DrFix!%20I%20am%20interested%20in%20partnering%20with%20your%20business%20as%20a%20service%20provider."
+                  href="https://wa.me/918791640669?text=Hello%20HelloHomie!%20I%20am%20interested%20in%20partnering%20with%20your%20business%20as%20a%20service%20provider."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-white hover:bg-emerald-50 text-emerald-500 hover:text-emerald-600 px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:-translate-y-0.5"

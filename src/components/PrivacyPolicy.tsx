@@ -35,7 +35,7 @@ const PrivacyPolicy = ({ navigate }: PrivacyPolicyProps) => {
         {/* Intro */}
         <section className="prose max-w-none text-gray-600 leading-relaxed">
           <p>
-            At <strong>DrFix</strong>, accessible from our website, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by DrFix and how we use it. If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.
+            At <strong>HelloHomie</strong>, accessible from our website, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by HelloHomie and how we use it. If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.
           </p>
         </section>
 
@@ -143,11 +143,11 @@ const PrivacyPolicy = ({ navigate }: PrivacyPolicyProps) => {
             <p className="text-gray-500 text-sm">Get in touch with our privacy compliance team.</p>
           </div>
           <a
-            href="mailto:drfix.support@gmail.com"
+            href="mailto:hellohomie.support@gmail.com"
             className="bg-emerald-400 hover:bg-emerald-500 text-white font-semibold px-6 py-3 rounded-xl shadow-md transition-colors flex items-center gap-2"
           >
             <Mail className="h-4 w-4" />
-            drfix.support@gmail.com
+            hellohomie.support@gmail.com
           </a>
         </section>
 

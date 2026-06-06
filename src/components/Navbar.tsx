@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import logo from '../assets/LOGO.jpg';
+import logo from '../assets/LOGO.png';
 
 interface NavbarProps {
   navigate: (path: string) => void;
@@ -62,9 +62,9 @@ const Navbar = ({ navigate, currentPath }: NavbarProps) => {
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }} className="flex items-center gap-2 group">
-              <img src={logo} alt="DrFix" className="h-14 sm:h-16 w-auto" />
+              <img src={logo} alt="HelloHomie" className="h-14 sm:h-16 w-auto" />
               <span className={`text-2xl font-bold tracking-tight ${isScrolled || currentPath !== '/' ? 'text-dark-900' : 'text-dark-900 drop-shadow-sm'}`}>
-                Dr<span className="text-blue-600">Fix</span>
+                Hello<span className="text-blue-600">Homie</span>
               </span>
             </a>
           </div>
