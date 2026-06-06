@@ -95,7 +95,7 @@ const Footer = ({ navigate }: FooterProps) => {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-emerald-400 shrink-0" />
-                <span>hellohomie.support@gmail.com</span>
+                <span>hellohomie.wash@gmail.com</span>
               </li>
             </ul>
           </div>

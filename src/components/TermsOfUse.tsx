@@ -138,11 +138,11 @@ const TermsOfUse = ({ navigate }: TermsOfUseProps) => {
             <p className="text-gray-500 text-sm">For details regarding terms or liability, contact us.</p>
           </div>
           <a
-            href="mailto:hellohomie.support@gmail.com"
+            href="mailto:hellohomie.wash@gmail.com"
             className="bg-emerald-400 hover:bg-emerald-500 text-white font-semibold px-6 py-3 rounded-xl shadow-md transition-colors flex items-center gap-2"
           >
             <Mail className="h-4 w-4" />
-            hellohomie.support@gmail.com
+            hellohomie.wash@gmail.com
           </a>
         </section>
 
